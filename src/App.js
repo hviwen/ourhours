@@ -1,31 +1,49 @@
-import React from 'react';
+import React, {Component} from 'react';
 import logo from './logo.svg';
 import './App.css';
 
 import CommentList from './comment/CommentList'
 import CommentInput from './comment/CommentInput'
 
-function onSubmitInfo(params) {
-  console.log('=== onSubmitInfo params >>>', params)
-}
+class App extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      comments: [],
+    }
+  }
 
-function App() {
+  onSubmitInfo(params) {
+    console.log('=== onSubmitInfo params >>>', params)
+    let comments = this.state.comments
+    const {username, content} = params
+    const props = {
+      user: username,
+      content,
+    }
+    comments.push(props)
+    this.setState({
+      comments,
+    })
+  }
 
+  render() {
+    const {comments} = this.state
+    return (
+      <div className="App">
+        <header className="App-header">
+          <img src={logo} className="App-logo" alt="logo"/>
+        </header>
 
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo"/>
-      </header>
-
-      <div className='Component-right'>
-        <div className='comment-block'>
-          <CommentInput onSubmit={onSubmitInfo.bind(this)}/>
-          <CommentList/>
+        <div className='Component-right'>
+          <div className='comment-block'>
+            <CommentInput onSubmit={this.onSubmitInfo.bind(this)}/>
+            <CommentList comments={comments}/>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  }
 }
 
 export default App;

@@ -4,7 +4,7 @@
  * @Description :
  **/
 
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import './styles.css'
 
 class CommentInput extends Component {
@@ -31,16 +31,22 @@ class CommentInput extends Component {
   }
 
   onSubmitClick() {
-    const { onSubmit } = this.props
-    const { username, content } = this.state
+    const {onSubmit} = this.props
+    const {username, content} = this.state
     const props = {
       username, content
     }
+    if (content === '') {
+      return alert('content is not empty')
+    }
     onSubmit && onSubmit(props)
+    this.setState({
+      content: ''
+    })
   }
 
   render() {
-    console.log("===== input props >>>> ",this.props)
+    console.log("===== input props >>>> ", this.props)
     return (
       <div className='comment-input'>
         <div className='comment-input-block'>
