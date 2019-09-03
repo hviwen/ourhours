@@ -46,7 +46,7 @@ class CommentInput extends Component {
   }
 
   render() {
-    console.log("===== input props >>>> ", this.props)
+    console.log("===== input props >>>> >> ", this.props)
     return (
       <div className='comment-input'>
         <div className='comment-input-block'>

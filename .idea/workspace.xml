@@ -6,7 +6,6 @@
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/comment/CommentInput.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/comment/CommentInput.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/comment/CommentList.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/comment/CommentList.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/comment/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/comment/styles.css" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -73,7 +72,7 @@
       <option name="presentableId" value="Default" />
       <updated>1567221661266</updated>
       <workItem from="1567221662534" duration="7341000" />
-      <workItem from="1567298721730" duration="2919000" />
+      <workItem from="1567298721730" duration="3333000" />
     </task>
     <servers />
   </component>

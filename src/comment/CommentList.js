@@ -46,6 +46,7 @@ class CommentList extends Component {
   }
 
   render() {
+    console.log("==== props >> ",this.props)
     const {comments} = this.props
     return (
       <div>

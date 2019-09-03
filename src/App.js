@@ -14,7 +14,7 @@ class App extends Component {
   }
 
   onSubmitInfo(params) {
-    console.log('=== onSubmitInfo params >>>', params)
+    console.log('=== onSubmitInfo params >>>>>', params)
     let comments = this.state.comments
     const {username, content} = params
     const props = {
