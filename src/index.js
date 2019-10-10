@@ -11,18 +11,20 @@
 // // Learn more about service workers: https://bit.ly/CRA-PWA
 // serviceWorker.unregister();
 
-const appState = {
-  title: {
-    text: 'React.js',
-    color: 'red',
-  },
-  content: {
-    text: 'React.js 内容',
-    color: 'blue'
+const themeReducer = (state, action) => {
+  if (!state) {
+    return {
+      title: {
+        text: 'React.js',
+        color: 'red',
+      },
+      content: {
+        text: 'React.js 内容',
+        color: 'blue'
+      }
+    }
   }
-}
 
-function stateChanger(state, action) {
   switch (action.type) {
     case 'UPDATE_TITLE_TEXT':
       return {
@@ -43,17 +45,19 @@ function stateChanger(state, action) {
     default:
       return state
   }
-}
+};
 
-function createStore(state, stateChanger) {
+function createStore(reducer) {
+  let state = null
   let listeners = []
 
   const subscribe = (listener) => listeners.push(listener)
   const getState = () => state
   const dispatch = (action) => {
-    state = stateChanger(state, action)
+    state = reducer(state, action)
     listeners.forEach((listener) => listener())
   }
+  dispatch({})
   return { getState, dispatch, subscribe }
 }
 
@@ -80,15 +84,15 @@ function renderContent(newContent, oldContent = {}) {
   contentDOM.style.color = newContent.color
 }
 
-const store = createStore(appState, stateChanger)
+const store = createStore(themeReducer)
 let oldState = store.getState()
 store.subscribe(() => {
-  const newStote = store.getState()
-  renderApp(newStote, oldState)
-  oldState = newStote
+  const newState = store.getState()
+  renderApp(newState, oldState)
+  oldState = newState
 })
 
 
-renderApp(appState)
+// renderApp(themeReducer())
 store.dispatch({ type: 'UPDATE_TITLE_TEXT', text: 'React.js 小书 是一本好书' })
 store.dispatch({ type: 'UPDATE_TITLE_COLOR', color: '#37c' })
